@@ -15,7 +15,7 @@ namespace GildedRose.Console
             }
         }
 
-        public void UpdateQualityold()
+        public void UpdateQualityOld()
         {
             for (var i = 0; i < Items.Count; i++)
             {

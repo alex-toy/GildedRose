@@ -4,8 +4,5 @@ namespace GildedRose.Console
 {
     public class LegendaryItem : Item
     {
-        public override void UpdateQuality()
-        {
-        }
     }
 }

@@ -1,19 +1,9 @@
 ﻿using GildedRose.Console.Entities;
+using GildedRose.Console.Strategies;
 
 namespace GildedRose.Console
 {
     public class BonifyingItem : Item
     {
-        public override void UpdateQuality()
-        {
-            IncrementQuality();
-
-            DecrementSellIn();
-
-            if (SellIn < 0)
-            {
-                IncrementQuality();
-            }
-        }
     }
 }

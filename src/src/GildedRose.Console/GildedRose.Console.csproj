@@ -51,6 +51,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\RegularItem.cs" />
+    <Compile Include="Strategies\BonifyingStrategy.cs" />
+    <Compile Include="Strategies\BonifyOnSellinStrategy.cs" />
+    <Compile Include="Strategies\ConjuredStrategy.cs" />
+    <Compile Include="Strategies\LegendaryStrategy.cs" />
+    <Compile Include="Strategies\RegularStrategy.cs" />
+    <Compile Include="Strategies\Strategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

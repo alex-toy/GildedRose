@@ -1,5 +1,6 @@
 using GildedRose.Console;
 using GildedRose.Console.Entities;
+using GildedRose.Console.Strategies;
 using NUnit.Framework;
 using System.Collections.Generic;
 
@@ -16,11 +17,11 @@ namespace GildedRoseTests
         }
 
         [Test]
-        public void TestRegularItem()
+        public void TestItem()
         {
             List<Item> Items = new List<Item>
             {
-                new RegularItem {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20}
+                new Item {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20, Strategy = new RegularStrategy()}
             };
             itemProcessor.Items = Items;
 
@@ -94,11 +95,11 @@ namespace GildedRoseTests
         }
 
         [Test]
-        public void TestRegularItem2()
+        public void TestRegularItem()
         {
             List<Item> Items = new List<Item>
             {
-                new RegularItem {Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7},
+                new RegularItem {Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7, Strategy = new RegularStrategy()},
             };
             itemProcessor.Items = Items;
 
@@ -133,6 +134,10 @@ namespace GildedRoseTests
             itemProcessor.UpdateQuality();
             Assert.That(Items[0].SellIn, Is.EqualTo(-3));
             Assert.That(Items[0].Quality, Is.EqualTo(0));
+
+            itemProcessor.UpdateQuality();
+            Assert.That(Items[0].SellIn, Is.EqualTo(-4));
+            Assert.That(Items[0].Quality, Is.EqualTo(0));
         }
 
         [Test]
@@ -140,7 +145,7 @@ namespace GildedRoseTests
         {
             List<Item> Items = new List<Item>
             {
-                new BonifyingItem {Name = "Aged Brie", SellIn = 2, Quality = 0},
+                new BonifyingItem {Name = "Aged Brie", SellIn = 2, Quality = 0, Strategy = new BonifyingStrategy()},
             };
             itemProcessor.Items = Items;
 
@@ -179,6 +184,36 @@ namespace GildedRoseTests
             itemProcessor.UpdateQuality();
             Assert.That(Items[0].SellIn, Is.EqualTo(-7));
             Assert.That(Items[0].Quality, Is.EqualTo(16));
+
+            itemProcessor.UpdateQuality();
+            Assert.That(Items[0].SellIn, Is.EqualTo(-8));
+            Assert.That(Items[0].Quality, Is.EqualTo(18));
+
+            itemProcessor.UpdateQuality();
+            Assert.That(Items[0].SellIn, Is.EqualTo(-9));
+            Assert.That(Items[0].Quality, Is.EqualTo(20));
+
+            itemProcessor.UpdateQuality();
+            itemProcessor.UpdateQuality();
+            itemProcessor.UpdateQuality();
+            itemProcessor.UpdateQuality();
+            itemProcessor.UpdateQuality();
+            itemProcessor.UpdateQuality();
+            itemProcessor.UpdateQuality();
+            itemProcessor.UpdateQuality();
+            itemProcessor.UpdateQuality();
+            itemProcessor.UpdateQuality();
+            itemProcessor.UpdateQuality();
+            itemProcessor.UpdateQuality();
+            itemProcessor.UpdateQuality();
+            itemProcessor.UpdateQuality();
+            itemProcessor.UpdateQuality();
+            Assert.That(Items[0].SellIn, Is.EqualTo(-24));
+            Assert.That(Items[0].Quality, Is.EqualTo(50));
+
+            itemProcessor.UpdateQuality();
+            Assert.That(Items[0].SellIn, Is.EqualTo(-25));
+            Assert.That(Items[0].Quality, Is.EqualTo(50));
         }
 
         [Test]
@@ -186,7 +221,7 @@ namespace GildedRoseTests
         {
             List<Item> Items = new List<Item>
             {
-                new LegendaryItem {Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80},
+                new LegendaryItem {Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80, Strategy = new LegendaryStrategy()},
             };
             itemProcessor.Items = Items;
 
@@ -212,7 +247,8 @@ namespace GildedRoseTests
                     {
                         Name = "Backstage passes to a TAFKAL80ETC concert",
                         SellIn = 15,
-                        Quality = 20
+                        Quality = 20,
+                        Strategy = new BonifyOnSellinStrategy()
                     },
             };
             itemProcessor.Items = Items;
@@ -299,7 +335,7 @@ namespace GildedRoseTests
         {
             List<Item> Items = new List<Item>
             {
-                new ConjuredItem {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
+                new ConjuredItem {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6, Strategy = new ConjuredStrategy()}
             };
             itemProcessor.Items = Items;
 
