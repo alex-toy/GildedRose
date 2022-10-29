@@ -16,11 +16,11 @@ namespace GildedRoseTests
         }
 
         [Test]
-        public void TestItem1()
+        public void TestRegularItem()
         {
             List<Item> Items = new List<Item>
             {
-                new Item {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20}
+                new RegularItem {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20}
             };
             itemProcessor.Items = Items;
 
@@ -94,11 +94,53 @@ namespace GildedRoseTests
         }
 
         [Test]
-        public void TestItem2()
+        public void TestRegularItem2()
         {
             List<Item> Items = new List<Item>
             {
-                new Item {Name = "Aged Brie", SellIn = 2, Quality = 0},
+                new RegularItem {Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7},
+            };
+            itemProcessor.Items = Items;
+
+            itemProcessor.UpdateQuality();
+            Assert.That(Items[0].SellIn, Is.EqualTo(4));
+            Assert.That(Items[0].Quality, Is.EqualTo(6));
+
+            itemProcessor.UpdateQuality();
+            Assert.That(Items[0].SellIn, Is.EqualTo(3));
+            Assert.That(Items[0].Quality, Is.EqualTo(5));
+
+            itemProcessor.UpdateQuality();
+            Assert.That(Items[0].SellIn, Is.EqualTo(2));
+            Assert.That(Items[0].Quality, Is.EqualTo(4));
+
+            itemProcessor.UpdateQuality();
+            Assert.That(Items[0].SellIn, Is.EqualTo(1));
+            Assert.That(Items[0].Quality, Is.EqualTo(3));
+
+            itemProcessor.UpdateQuality();
+            Assert.That(Items[0].SellIn, Is.EqualTo(0));
+            Assert.That(Items[0].Quality, Is.EqualTo(2));
+
+            itemProcessor.UpdateQuality();
+            Assert.That(Items[0].SellIn, Is.EqualTo(-1));
+            Assert.That(Items[0].Quality, Is.EqualTo(0));
+
+            itemProcessor.UpdateQuality();
+            Assert.That(Items[0].SellIn, Is.EqualTo(-2));
+            Assert.That(Items[0].Quality, Is.EqualTo(0));
+
+            itemProcessor.UpdateQuality();
+            Assert.That(Items[0].SellIn, Is.EqualTo(-3));
+            Assert.That(Items[0].Quality, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void TestBonifyingItem()
+        {
+            List<Item> Items = new List<Item>
+            {
+                new BonifyingItem {Name = "Aged Brie", SellIn = 2, Quality = 0},
             };
             itemProcessor.Items = Items;
 
@@ -140,53 +182,11 @@ namespace GildedRoseTests
         }
 
         [Test]
-        public void TestItem3()
+        public void TestLegendaryItem()
         {
             List<Item> Items = new List<Item>
             {
-                new Item {Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7},
-            };
-            itemProcessor.Items = Items;
-
-            itemProcessor.UpdateQuality();
-            Assert.That(Items[0].SellIn, Is.EqualTo(4));
-            Assert.That(Items[0].Quality, Is.EqualTo(6));
-
-            itemProcessor.UpdateQuality();
-            Assert.That(Items[0].SellIn, Is.EqualTo(3));
-            Assert.That(Items[0].Quality, Is.EqualTo(5));
-
-            itemProcessor.UpdateQuality();
-            Assert.That(Items[0].SellIn, Is.EqualTo(2));
-            Assert.That(Items[0].Quality, Is.EqualTo(4));
-
-            itemProcessor.UpdateQuality();
-            Assert.That(Items[0].SellIn, Is.EqualTo(1));
-            Assert.That(Items[0].Quality, Is.EqualTo(3));
-
-            itemProcessor.UpdateQuality();
-            Assert.That(Items[0].SellIn, Is.EqualTo(0));
-            Assert.That(Items[0].Quality, Is.EqualTo(2));
-
-            itemProcessor.UpdateQuality();
-            Assert.That(Items[0].SellIn, Is.EqualTo(-1));
-            Assert.That(Items[0].Quality, Is.EqualTo(0));
-
-            itemProcessor.UpdateQuality();
-            Assert.That(Items[0].SellIn, Is.EqualTo(-2));
-            Assert.That(Items[0].Quality, Is.EqualTo(0));
-
-            itemProcessor.UpdateQuality();
-            Assert.That(Items[0].SellIn, Is.EqualTo(-3));
-            Assert.That(Items[0].Quality, Is.EqualTo(0));
-        }
-
-        [Test]
-        public void TestItem4()
-        {
-            List<Item> Items = new List<Item>
-            {
-                new Item {Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80},
+                new LegendaryItem {Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80},
             };
             itemProcessor.Items = Items;
 
@@ -204,11 +204,11 @@ namespace GildedRoseTests
         }
 
         [Test]
-        public void TestItem5()
+        public void TestBonifyOnSellinItem()
         {
             List<Item> Items = new List<Item>
             {
-                new Item
+                new BonifyOnSellinItem
                     {
                         Name = "Backstage passes to a TAFKAL80ETC concert",
                         SellIn = 15,
@@ -295,11 +295,11 @@ namespace GildedRoseTests
         }
 
         [Test]
-        public void TestItem6()
+        public void TestConjuredItem()
         {
             List<Item> Items = new List<Item>
             {
-                new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
+                new ConjuredItem {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
             };
             itemProcessor.Items = Items;
 

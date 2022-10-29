@@ -42,10 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\BonifyingItem.cs" />
+    <Compile Include="Entities\BonifyOnSellinItem.cs" />
+    <Compile Include="Entities\ConjuredItem.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="ItemProcessor.cs" />
+    <Compile Include="Entities\LegendaryItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entities\RegularItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
