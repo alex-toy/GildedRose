@@ -7,5 +7,10 @@
         public int SellIn { get; set; }
 
         public int Quality { get; set; }
+
+        public override string ToString()
+        {
+            return $"Name : '{Name}' - SellIn : {SellIn} - Quality : {Quality}";
+        }
     }
 }
