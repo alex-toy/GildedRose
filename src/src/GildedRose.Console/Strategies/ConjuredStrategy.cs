@@ -4,12 +4,14 @@ namespace GildedRose.Console.Strategies
 {
     public class ConjuredStrategy : Strategy
     {
-        public void UpdateQuality(Item item)
-        {
-            item.DecrementQuality();
-            item.SellIn -= 1;
+        public Item Item { get; set; }
 
-            if (item.SellIn < 0) item.DecrementQuality();
+        public void UpdateQuality()
+        {
+            Item.DecrementQuality();
+            Item.SellIn -= 1;
+
+            if (Item.SellIn < 0) Item.DecrementQuality();
         }
     }
 }

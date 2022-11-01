@@ -19,10 +19,10 @@ namespace GildedRoseTests
         [Test]
         public void TestItem()
         {
-            List<Item> Items = new List<Item>
-            {
-                new Item {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20, Strategy = new RegularStrategy()}
-            };
+            Item item = new Item { Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20, Strategy = new RegularStrategy() };
+            item.Strategy.Item = item;
+
+            List<Item> Items = new List<Item> { item };
             itemProcessor.Items = Items;
 
             itemProcessor.UpdateQuality();
@@ -97,10 +97,16 @@ namespace GildedRoseTests
         [Test]
         public void TestRegularItem()
         {
-            List<Item> Items = new List<Item>
+            RegularItem regularItem = new RegularItem
             {
-                new RegularItem {Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7, Strategy = new RegularStrategy()},
+                Name = "Elixir of the Mongoose",
+                SellIn = 5,
+                Quality = 7,
+                Strategy = new RegularStrategy()
             };
+            regularItem.Strategy.Item = regularItem;
+
+            List<Item> Items = new List<Item>{  regularItem };
             itemProcessor.Items = Items;
 
             itemProcessor.UpdateQuality();
@@ -143,9 +149,12 @@ namespace GildedRoseTests
         [Test]
         public void TestBonifyingItem()
         {
+            BonifyingItem bonifyingItem = new BonifyingItem { Name = "Aged Brie", SellIn = 2, Quality = 0, Strategy = new BonifyingStrategy() };
+            bonifyingItem.Strategy.Item = bonifyingItem;
+
             List<Item> Items = new List<Item>
             {
-                new BonifyingItem {Name = "Aged Brie", SellIn = 2, Quality = 0, Strategy = new BonifyingStrategy()},
+                bonifyingItem
             };
             itemProcessor.Items = Items;
 
@@ -219,9 +228,11 @@ namespace GildedRoseTests
         [Test]
         public void TestLegendaryItem()
         {
+            LegendaryItem legendaryItem = new LegendaryItem { Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80, Strategy = new LegendaryStrategy() };
+            legendaryItem.Strategy.Item = legendaryItem;
             List<Item> Items = new List<Item>
             {
-                new LegendaryItem {Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80, Strategy = new LegendaryStrategy()},
+                legendaryItem
             };
             itemProcessor.Items = Items;
 
@@ -241,15 +252,18 @@ namespace GildedRoseTests
         [Test]
         public void TestBonifyOnSellinItem()
         {
+            BonifyOnSellinItem bonifyOnSellinItem = new BonifyOnSellinItem
+            {
+                Name = "Backstage passes to a TAFKAL80ETC concert",
+                SellIn = 15,
+                Quality = 20,
+                Strategy = new BonifyOnSellinStrategy()
+            };
+            bonifyOnSellinItem.Strategy.Item = bonifyOnSellinItem;
+
             List<Item> Items = new List<Item>
             {
-                new BonifyOnSellinItem
-                    {
-                        Name = "Backstage passes to a TAFKAL80ETC concert",
-                        SellIn = 15,
-                        Quality = 20,
-                        Strategy = new BonifyOnSellinStrategy()
-                    },
+                bonifyOnSellinItem
             };
             itemProcessor.Items = Items;
 
@@ -333,9 +347,12 @@ namespace GildedRoseTests
         [Test]
         public void TestConjuredItem()
         {
+            ConjuredItem conjuredItem = new ConjuredItem { Name = "Conjured Mana Cake", SellIn = 3, Quality = 6, Strategy = new ConjuredStrategy() };
+            conjuredItem.Strategy.Item = conjuredItem;
+
             List<Item> Items = new List<Item>
             {
-                new ConjuredItem {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6, Strategy = new ConjuredStrategy()}
+                conjuredItem
             };
             itemProcessor.Items = Items;
 

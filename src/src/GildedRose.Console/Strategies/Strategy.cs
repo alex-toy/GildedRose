@@ -4,6 +4,8 @@ namespace GildedRose.Console.Strategies
 {
     public interface Strategy
     {
-        void UpdateQuality(Item item);
+        Item Item { get; set; }
+
+        void UpdateQuality();
     }
 }

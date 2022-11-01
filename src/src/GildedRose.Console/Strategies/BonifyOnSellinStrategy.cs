@@ -4,30 +4,32 @@ namespace GildedRose.Console.Strategies
 {
     public class BonifyOnSellinStrategy : Strategy
     {
-        private void BonifyOnSellin(Item item)
-        {
-            item.IncrementQuality();
+        public Item Item { get; set; }
 
-            if (item.SellIn < 11)
+        private void BonifyOnSellin()
+        {
+            Item.IncrementQuality();
+
+            if (Item.SellIn < 11)
             {
-                item.IncrementQuality();
+                Item.IncrementQuality();
             }
 
-            if (item.SellIn < 6)
+            if (Item.SellIn < 6)
             {
-                item.IncrementQuality();
+                Item.IncrementQuality();
             }
         }
 
-        public void UpdateQuality(Item item)
+        public void UpdateQuality()
         {
-            BonifyOnSellin(item);
+            BonifyOnSellin();
 
-            item.SellIn -= 1;
+            Item.SellIn -= 1;
 
-            if (item.SellIn < 0)
+            if (Item.SellIn < 0)
             {
-                item.Quality = 0;
+                Item.Quality = 0;
             }
         }
     }

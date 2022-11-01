@@ -9,7 +9,9 @@ namespace GildedRose.Console.Strategies
 {
     public class LegendaryStrategy : Strategy
     {
-        public void UpdateQuality(Item item)
+        public Item Item { get; set; }
+
+        public void UpdateQuality()
         {
         }
     }

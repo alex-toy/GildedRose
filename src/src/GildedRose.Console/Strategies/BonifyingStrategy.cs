@@ -4,15 +4,17 @@ namespace GildedRose.Console.Strategies
 {
     public class BonifyingStrategy : Strategy
     {
-        public void UpdateQuality(Item item)
+        public Item Item { get; set; }
+
+        public void UpdateQuality()
         {
-            item.IncrementQuality();
+            Item.IncrementQuality();
 
-            item.SellIn -= 1;
+            Item.SellIn -= 1;
 
-            if (item.SellIn < 0)
+            if (Item.SellIn < 0)
             {
-                item.IncrementQuality();
+                Item.IncrementQuality();
             }
         }
     }

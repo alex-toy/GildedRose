@@ -19,7 +19,7 @@ namespace GildedRose.Console.Entities
 
         public void UpdateQuality()
         {
-            Strategy.UpdateQuality(this);
+            Strategy.UpdateQuality();
         }
 
         public void IncrementQuality()
